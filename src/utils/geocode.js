@@ -4,10 +4,10 @@ const getWeather = (url) => {
     return axios.get(url)
     .then(function (response) {
       // handle success
-      const {temperature, precip} = response.data.current;
+      const {temperature, precip, humidity, feelslike} = response.data.current;
       const {name, region, country} = response.data.location;
       const weatherDesc = response.data.current.weather_descriptions[0].toLowerCase();
-      const forecast = `Currently it is ${weatherDesc}, ${temperature} degrees with ${precip} chance of rain.`;
+      const forecast = `Currently it is ${weatherDesc}, ${temperature} degrees with ${precip} chance of rain.  The feels-like temperature is ${feelslike}, and humidity is ${humidity}.`;
       const location = `${name}, ${region}, ${country}`;
       return {location, forecast};
     })
